@@ -1,8 +1,25 @@
 import { useState } from "react";
 import Image from "next/image";
 import React from "react";
+import axios from "axios";
 
 export const Login = ({ handleSwitchForm }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const loginHandler = async () => {
+    try {
+      const result = await axios.post("http://localhost:8000/login", {
+        email: email,
+        password: password,
+      });
+      console.log(result);
+    } catch (error) {
+      console.log(error.data);
+    }
+  };
+
   return (
     <div className="flex">
       <div className=" h-[100vh] w-[50%] flex flex-col  bg-white pt-64">
@@ -23,14 +40,21 @@ export const Login = ({ handleSwitchForm }) => {
           </div>
           <div className="flex flex-col gap-4">
             <input
+              onChange={(event) => setEmail(event.target.value)}
+              value={email}
               className="w-96 h-12 rounded-lg bg-gray-200 p-2 mx-auto"
               placeholder="Email"
             />
             <input
+              onChange={(event) => setPassword(event.target.value)}
+              value={password}
               className="w-96 h-12 rounded-lg bg-gray-200 p-2 mx-auto"
               placeholder="Password"
             />
-            <button className="w-[100%] h-12 rounded-2xl bg-[#0166FF] bg-p-2 mx-auto text-white text-base font-normal">
+            <button
+              onClick={loginHandler}
+              className="w-[100%] h-12 rounded-2xl bg-[#0166FF] bg-p-2 mx-auto text-white text-base font-normal"
+            >
               Log in
             </button>
           </div>
@@ -42,7 +66,6 @@ export const Login = ({ handleSwitchForm }) => {
           </div>
         </div>
       </div>
-      <div className="w-[50%] h-[100vh] bg-[#0166FF]"></div>
     </div>
   );
 };

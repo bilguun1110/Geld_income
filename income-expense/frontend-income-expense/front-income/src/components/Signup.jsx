@@ -1,6 +1,32 @@
 import Image from "next/image";
+import React from "react";
+import axios from "axios";
+import { useState } from "react";
 
 export const Signup = ({ handleSwitchForm }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rePassword, setRePassword] = useState("");
+
+  const signUpHandler = async () => {
+    try {
+      const result = await axios.post("http://localhost:8000/signup", {
+        email: email,
+        name: name,
+        password: password,
+        rePassword: rePassword,
+      });
+      if (password === rePassword) {
+        console.log(result);
+      } else {
+        console.log("wrong password");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="">
       <div className=" h-[100vh] w-[50%] flex flex-col  bg-white pt-64">
@@ -21,22 +47,33 @@ export const Signup = ({ handleSwitchForm }) => {
           </div>
           <div className="flex flex-col gap-4 robotoText">
             <input
+              value={name}
+              onChange={(ev) => setName(ev.target.value)}
               className="w-96 h-12 rounded-lg bg-gray-200 p-2 mx-auto"
               placeholder="Name"
             />
             <input
+              value={email}
+              onChange={(ev) => setEmail(ev.target.value)}
               className="w-96 h-12 rounded-lg bg-gray-200 p-2 mx-auto"
               placeholder="Email"
             />
             <input
+              value={password}
+              onChange={(ev) => setPassword(ev.target.value)}
               className="w-96 h-12 rounded-lg bg-gray-200 p-2 mx-auto"
               placeholder="Password"
             />
             <input
+              value={rePassword}
+              onChange={(ev) => setRePassword(ev.target.value)}
               className="w-96 h-12 rounded-lg bg-gray-200 p-2 mx-auto"
               placeholder="Re-Password"
             />
-            <button className="w-[100%] h-12 rounded-2xl bg-[#0166FF] bg-p-2 mx-auto text-white text-base font-normal">
+            <button
+              onClick={signUpHandler}
+              className="w-[100%] h-12 rounded-2xl bg-[#0166FF] bg-p-2 mx-auto text-white text-base font-normal"
+            >
               Sign up
             </button>
           </div>

@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Bilguun",
+    "email": "Binderiya@gmail.com",
+    "password": "123456",
+    "rePassword": "123456"
+  },
+  {
+    "name": "chinguun",
+    "email": "Binderiyamail.com",
+    "password": "$2b$04$OjjqsqN2UodRIsOd.VV0KOYX4wEMEhRk0OcVvwhTHv4WxQ7slV9T.",
+    "hashedPassword": "$2b$04$OjjqsqN2UodRIsOd.VV0KOYX4wEMEhRk0OcVvwhTHv4WxQ7slV9T."
+  },
+  {
+    "name": "uynga",
+    "email": "uugii@gmail.com",
+    "password": "$2b$04$HZvv987szUbJGV5XsmQB/eVeVq6LwJy5b/yJjnCFLTssKllx/odzW",
+    "rePassword": "$2b$04$HZvv987szUbJGV5XsmQB/eVeVq6LwJy5b/yJjnCFLTssKllx/odzW"
+  },
+  {
+    "name": "chingun",
+    "email": "byarma@gmail.com",
+    "password": "$2b$04$Le9Ag34rfDJtNvKm8uXuAuzI1FDT1JpzIL9LXGRxMGrLOiz50jUDO",
+    "rePassword": "$2b$04$Le9Ag34rfDJtNvKm8uXuAuzI1FDT1JpzIL9LXGRxMGrLOiz50jUDO"
+  },
+  {
+    "name": "chingun",
+    "email": "byar@gmail.com",
+    "password": "$2b$04$zeBNcRYt4UbGpTtULzds9eJ.R8rv.1i/Lzj3U899j.aYj4MYHEHjC",
+    "rePassword": "$2b$04$zeBNcRYt4UbGpTtULzds9eJ.R8rv.1i/Lzj3U899j.aYj4MYHEHjC"
+  }
+]

@@ -3,11 +3,12 @@ import React from "react";
 import axios from "axios";
 import { useState } from "react";
 
-export const Signup = ({ handleSwitchForm }) => {
+export const Signup = ({ handleSwitchForm, setOnSignUp }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const [error, setError] = useState("");
 
   const signUpHandler = async () => {
     try {
@@ -19,11 +20,13 @@ export const Signup = ({ handleSwitchForm }) => {
       });
       if (password === rePassword) {
         console.log(result);
+        setOnSignUp(false);
       } else {
-        console.log("wrong password");
+        setError("wrong password");
       }
     } catch (error) {
-      console.log(error);
+      console.log(error.response.data);
+      setError(error.response.data);
     }
   };
 
@@ -60,20 +63,24 @@ export const Signup = ({ handleSwitchForm }) => {
             />
             <input
               value={password}
+              type="password"
               onChange={(ev) => setPassword(ev.target.value)}
               className="w-96 h-12 rounded-lg bg-gray-200 p-2 mx-auto"
               placeholder="Password"
             />
             <input
               value={rePassword}
+              type="password"
               onChange={(ev) => setRePassword(ev.target.value)}
               className="w-96 h-12 rounded-lg bg-gray-200 p-2 mx-auto"
               placeholder="Re-Password"
             />
+            <div>{error && <div className="text-red-600">{error} </div>}</div>
             <button
               onClick={signUpHandler}
               className="w-[100%] h-12 rounded-2xl bg-[#0166FF] bg-p-2 mx-auto text-white text-base font-normal"
             >
+              {/* <Link to="/income-expense/frontend-income-expense/front-income/src/components/Login.jsx" /> */}
               Sign up
             </button>
           </div>

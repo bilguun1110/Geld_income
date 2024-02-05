@@ -2,11 +2,13 @@ import { useState } from "react";
 import Image from "next/image";
 import React from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export const Login = ({ handleSwitchForm }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const loginHandler = async () => {
     try {
@@ -14,9 +16,11 @@ export const Login = ({ handleSwitchForm }) => {
         email: email,
         password: password,
       });
-      console.log(result);
+
+      router.push(`/login`);
     } catch (error) {
-      console.log(error.data);
+      console.log(error.response.data);
+      setError(error.response.data);
     }
   };
 
@@ -48,9 +52,12 @@ export const Login = ({ handleSwitchForm }) => {
             <input
               onChange={(event) => setPassword(event.target.value)}
               value={password}
+              type="password"
               className="w-96 h-12 rounded-lg bg-gray-200 p-2 mx-auto"
               placeholder="Password"
             />
+            <div>{error && <div className="text-red-500">{error}</div>}</div>
+
             <button
               onClick={loginHandler}
               className="w-[100%] h-12 rounded-2xl bg-[#0166FF] bg-p-2 mx-auto text-white text-base font-normal"

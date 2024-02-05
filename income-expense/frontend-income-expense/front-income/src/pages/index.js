@@ -12,7 +12,10 @@ export default function Home() {
     <div>
       <div>
         {onSignup ? (
-          <Signup handleSwitchForm={handleSwitchForm} />
+          <Signup
+            handleSwitchForm={handleSwitchForm}
+            setOnSignUp={setOnSignUp}
+          />
         ) : (
           <Login handleSwitchForm={handleSwitchForm} />
         )}

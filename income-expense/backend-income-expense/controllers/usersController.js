@@ -14,7 +14,9 @@ export const createUserService = async (req, res) => {
 export const loginUserService = async (req, res) => {
   const { email: paraEmail } = req.body;
   const userDb =
-    "/Users/bilguun/Desktop/Geld_income/income-expense/backend-income-expense/models/users.json";
+    // "/Users/bilguun/Desktop/Geld_income/income-expense/backend-income-expense/models/users.json";
+    "/Users/23LP0562/Desktop/Geld_income/income-expense/backend-income-expense/models/users.json";
+
   try {
     const oldUsersJson = await fs.readFileSync(userDb, "utf-8");
     const oldUsers = JSON.parse(oldUsersJson);

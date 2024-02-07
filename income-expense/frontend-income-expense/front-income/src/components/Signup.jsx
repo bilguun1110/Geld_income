@@ -80,7 +80,6 @@ export const Signup = ({ handleSwitchForm, setOnSignUp }) => {
               onClick={signUpHandler}
               className="w-[100%] h-12 rounded-2xl bg-[#0166FF] bg-p-2 mx-auto text-white text-base font-normal"
             >
-              {/* <Link to="/income-expense/frontend-income-expense/front-income/src/components/Login.jsx" /> */}
               Sign up
             </button>
           </div>

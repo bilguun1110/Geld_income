@@ -1,4 +1,5 @@
 import { createUser } from "../quaries/user/createUsers.js";
+import jwt from "jsonwebtoken";
 
 import fs from "fs";
 
@@ -20,14 +21,19 @@ export const loginUserService = async (req, res) => {
   try {
     const oldUsersJson = await fs.readFileSync(userDb, "utf-8");
     const oldUsers = JSON.parse(oldUsersJson);
-    console.log(oldUsers);
 
     const exactUser = oldUsers.find(({ email }) => email === paraEmail);
+    const token = jwt.sign(
+      { email: paraEmail },
+      process.env.JWT_SECRET || "defaultSecret",
+      { expiresIn: "1h" }
+    );
 
     if (!exactUser) {
       return "password or username wrong";
     }
-    res.send(exactUser);
+
+    res.send({ token });
   } catch (error) {
     res.status(500).send(error.message);
   }

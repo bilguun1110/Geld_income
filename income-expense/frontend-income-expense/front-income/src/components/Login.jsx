@@ -17,6 +17,7 @@ export const Login = ({ handleSwitchForm }) => {
         password: password,
       });
 
+      localStorage.setItem("token", result.data.token);
       router.push(`/login`);
     } catch (error) {
       console.log(error.response.data);

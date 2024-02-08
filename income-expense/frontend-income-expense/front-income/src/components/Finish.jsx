@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const Finish = () => {
+export const Finish = ({ changePage }) => {
   return (
     <div className="w-[100wh]  flex justify-center gap-8 ">
       <div className="w-80 h-67 mt-10  flex flex-col  items-center  ">

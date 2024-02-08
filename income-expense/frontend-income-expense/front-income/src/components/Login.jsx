@@ -3,6 +3,7 @@ import Image from "next/image";
 import React from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export const Login = ({ handleSwitchForm }) => {
   const [email, setEmail] = useState("");

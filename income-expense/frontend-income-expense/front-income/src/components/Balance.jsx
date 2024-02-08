@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const Balance = () => {
+export const Balance = ({ changePage }) => {
   return (
     <div className="w-[100wh]  flex justify-center gap-8 ">
       <div className="w-80 h-67 mt-10  flex flex-col  items-center  ">
@@ -34,6 +34,7 @@ export const Balance = () => {
         <div className="text-xs font-normal text-[#475569] mt-3">
           How much cash do you have in your wallet?
         </div>
+
         <button className="w-[100%] h-12 rounded-2xl bg-[#0166FF] mt-8 bg-p-2 mx-auto text-white text-base font-normal">
           Confirm
         </button>

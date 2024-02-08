@@ -7,7 +7,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-export const Currency = () => {
+export const Currency = ({ changePage }) => {
   return (
     <div className="w-[100wh]  flex justify-center gap-8 ">
       <div className="w-80 h-67 mt-10  flex flex-col  items-center  ">

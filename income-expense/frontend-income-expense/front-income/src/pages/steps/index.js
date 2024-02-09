@@ -2,7 +2,7 @@ import { Balance } from "@/components/Balance";
 import { Currency } from "@/components/Currency";
 import { Finish } from "@/components/Finish";
 import { useState } from "react";
-import { button } from "@/components/Currency";
+
 const stepper = [Currency, Balance, Finish];
 
 export default function Home() {
@@ -10,16 +10,17 @@ export default function Home() {
 
   const Step = stepper[step];
 
-  // const changePage = () => {
-  //   setStep(step + 1);
-  // };
-  // if (step < stepper.length) {
-  //   <Step button={changePage} />;
-  // }
+  const changePage = () => {
+    setStep(step + 1);
+  };
+
+  if (step < stepper.length) {
+    <Step button={changePage} />;
+  }
 
   return (
     <div>
-      <div>
+      <div className="flex flex-col items-center ">
         <Step />
       </div>
     </div>

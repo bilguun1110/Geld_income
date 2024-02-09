@@ -1,6 +1,18 @@
 import Image from "next/image";
+import { useState } from "react";
+import { SteppingButton } from "./steppingButton";
 
-export const Balance = ({ changePage }) => {
+export const Balance = (props) => {
+  const { button } = props;
+
+  const text = "Confirm";
+
+  const [email, setEmail] = useState("");
+
+  const handleSelect = (event) => {
+    setEmail(event.target.value);
+  };
+
   return (
     <div className="w-[100wh]  flex justify-center gap-8 ">
       <div className="w-80 h-67 mt-10  flex flex-col  items-center  ">
@@ -29,15 +41,19 @@ export const Balance = ({ changePage }) => {
         </h3>
         <input
           placeholder="Email"
+          onChange={handleSelect}
+          value={email}
           className="w-96 h-12 mt-6 bg-[#F3F4F6] pl-2 rounded-md"
         ></input>
         <div className="text-xs font-normal text-[#475569] mt-3">
           How much cash do you have in your wallet?
         </div>
 
-        <button className="w-[100%] h-12 rounded-2xl bg-[#0166FF] mt-8 bg-p-2 mx-auto text-white text-base font-normal">
+        <SteppingButton />
+
+        {/* <button className="w-[100%] h-12 rounded-2xl bg-[#0166FF] mt-8 bg-p-2 mx-auto text-white text-base font-normal">
           Confirm
-        </button>
+        </button> */}
       </div>
     </div>
   );

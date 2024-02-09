@@ -1,13 +1,28 @@
 import Image from "next/image";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { StepperButton } from "./StepperButton";
+import React from "react";
+const options = [
+  { value: "mnt", option: "MNT-Mongolian Tugrik" },
+  { value: "usd", option: "USD-American Dollar" },
+  { value: "won", option: "WON-Korean Won" },
+  { value: "yn", option: "YN-Chinese Yuan" },
+  { value: "jpw", option: "JPW-Japanese Yen" },
+  { value: "euro", option: "EUR-Europian Euro" },
+];
 
-export const Currency = ({ changePage }) => {
+export const Currency = (props) => {
+  const { button } = props;
+
+  const text = "Confirm";
+
+  const [currencies, setCurrencies] = useState("");
+
+  const handleSelect = (event) => {
+    setCurrencies(event.target.value);
+  };
+
   return (
     <div className="w-[100wh]  flex justify-center gap-8 ">
       <div className="w-80 h-67 mt-10  flex flex-col  items-center  ">
@@ -32,23 +47,33 @@ export const Currency = ({ changePage }) => {
           <Image src="/Money.png" width={32} height={32} className="w-8 h-8" />
         </div>
         <h3 className="font-semibold text-2xl mt-4">Select base currency</h3>
-        <Select>
-          <SelectTrigger className="w-96 h-16 font-semibold-600 text-base text-[#1F2937] bg-[#F3F4F6] rounded-3 mt-6">
-            <SelectValue placeholder="Theme" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light">Light</SelectItem>
-            <SelectItem value="dark">Dark</SelectItem>
-            <SelectItem value="system">System</SelectItem>
-          </SelectContent>
-        </Select>
-        <div className="text-xs font-normal text-[#475569] mt-3">
-          Your base currency should be the one you use most often. All
-          transaction in other currencies will be calculated based on this one
+        <div className="mt-6">
+          <select
+            name=""
+            id=""
+            onChange={handleSelect}
+            value={currencies}
+            className="w-full h-16 border-2 pr-3 bg-slate-100 rounded-lg text-base font-semibold p-2 "
+          >
+            {options.map(({ option, value }, index) => (
+              <option value={value} key={index}>
+                {option}
+              </option>
+            ))}
+          </select>
+
+          <div className="text-xs font-normal text-[#475569] mt-3">
+            Your base currency should be the one you use most often. All
+            transaction in other currencies will be calculated based on this one
+          </div>
         </div>
-        <button className="w-[100%] h-12 rounded-2xl bg-[#0166FF] mt-8 bg-p-2 mx-auto text-white text-base font-normal">
+        <StepperButton onClick={button} text={text} />
+        {/* <button
+          onClick={button}
+          className="w-[100%] h-12 rounded-2xl bg-[#0166FF] mt-8 bg-p-2 mx-auto text-white text-base font-normal"
+        >
           Confirm
-        </button>
+        </button> */}
       </div>
     </div>
   );

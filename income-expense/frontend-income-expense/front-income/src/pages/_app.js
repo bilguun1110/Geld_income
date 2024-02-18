@@ -10,7 +10,7 @@ const roboto = Roboto({
 export default function App({ Component, pageProps }) {
   return (
     <div className={`${roboto.variable}`}>
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </div>
   );
 }

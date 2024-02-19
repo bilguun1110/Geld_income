@@ -42,7 +42,7 @@ export const Currency = (props) => {
           </ul>
         </div>
       </div>
-      <div className="absolute mt-80 w-96 flex flex-col items-center">
+      <div className="absolute mt-60 w-96 flex flex-col items-center">
         <div className="bg-[#0166FF] w-12 h-12 rounded-[50%] flex items-center justify-center  ">
           <Image src="/Money.png" width={32} height={32} className="w-8 h-8" />
         </div>
@@ -67,7 +67,7 @@ export const Currency = (props) => {
             transaction in other currencies will be calculated based on this one
           </div>
         </div>
-        <StepperButton onClick={button} text={text} />
+        {/* <StepperButton onClick={button} text={text} /> */}
         {/* <button
           onClick={button}
           className="w-[100%] h-12 rounded-2xl bg-[#0166FF] mt-8 bg-p-2 mx-auto text-white text-base font-normal"

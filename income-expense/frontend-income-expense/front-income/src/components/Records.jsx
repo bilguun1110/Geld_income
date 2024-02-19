@@ -5,9 +5,9 @@ import { IoEyeSharp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import { Checkbox } from "@nextui-org/react";
+
 import React from "react";
-import { useState } from "react";
+
 import { Modal } from "./Modal";
 
 export const Records = () => {
@@ -90,8 +90,8 @@ export const Records = () => {
   ];
 
   return (
-    <div className="w-[100wh] px-[120px] bg-[#F3F4F6] pt-6  flex justify-between">
-      <div className=" w-[282px] px-4 py-6 bg-white rounded-xl flex flex-col gap-6 ">
+    <div className="w-[100wh] h-[100vh] px-[120px] bg-[#F3F4F6] pt-6  flex justify-between">
+      <div className=" w-[282px] h-[1080px] px-4 py-6 bg-white rounded-xl flex flex-col gap-6 ">
         <div className="flex flex-col gap-6">
           <h3 className="font-semibold text-2xl">Records</h3>
           <button

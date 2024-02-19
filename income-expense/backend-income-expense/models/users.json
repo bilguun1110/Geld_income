@@ -16,5 +16,11 @@
     "email": "uugii@gmail.com",
     "password": "$2b$04$HZvv987szUbJGV5XsmQB/eVeVq6LwJy5b/yJjnCFLTssKllx/odzW",
     "rePassword": "$2b$04$HZvv987szUbJGV5XsmQB/eVeVq6LwJy5b/yJjnCFLTssKllx/odzW"
+  },
+  {
+    "name": "bilguun",
+    "email": "bilguun@gmail.com",
+    "password": "$2b$04$RfbGHK7yUoQZcFT.vP7IluqgSsHE7EivJp57eV44XMlMB6CWCsyue",
+    "rePassword": "$2b$04$RfbGHK7yUoQZcFT.vP7IluqgSsHE7EivJp57eV44XMlMB6CWCsyue"
   }
 ]

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useState } from "react";
 
 export const Modal = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
@@ -31,7 +32,7 @@ export const Modal = ({ isOpen, onClose }) => {
         <div className="flex">
           <div className="w-[50%] px-5 py-6 flex flex-col gap-5 ">
             <div className="w-[100%]] h-[40px] rounded-[100px] text-base font-normal bg-[#F3F4F6] ">
-              <button className="w-[50%] bg-[#0166FF] h-[100%] text-[#F9FAFB] rounded-[100px]">
+              <button className="w-[50%] bg-[#0166FF]  h-[100%] text-[#F9FAFB] rounded-[100px]">
                 Expense
               </button>
               <button className="w-[50%] h-[100%]">Income</button>
@@ -49,9 +50,8 @@ export const Modal = ({ isOpen, onClose }) => {
                 className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg border-[1px]"
                 name="dd"
                 id=""
-                placeholder="Choose"
               >
-                <option value=""></option>
+                <option value="">Choose</option>
               </select>
             </div>
             <div className="flex gap-3">
@@ -61,7 +61,6 @@ export const Modal = ({ isOpen, onClose }) => {
                   className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg border-[1px] mt-2"
                   name=""
                   id=""
-                  placeholder="Choose"
                 >
                   <option value="">Oct 30, 2023</option>
                 </select>
@@ -97,7 +96,7 @@ export const Modal = ({ isOpen, onClose }) => {
             <div className="">
               <p className="text-base font-normal">Note</p>
 
-              <input
+              <textarea
                 className="w-[100%] h-[250px] bg-[#F9FAFB] rounded-lg border-[1px] mt-2 p-4  "
                 name=""
                 id=""

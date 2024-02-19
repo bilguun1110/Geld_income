@@ -3,7 +3,6 @@ import Image from "next/image";
 import React from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 export const Login = ({ handleSwitchForm }) => {
   const [email, setEmail] = useState("");
@@ -19,7 +18,8 @@ export const Login = ({ handleSwitchForm }) => {
       });
 
       localStorage.setItem("token", result.data.token);
-      router.push(`/login`);
+      router.push(`/dashboard
+      `);
     } catch (error) {
       console.log(error.response.data);
       setError(error.response.data);

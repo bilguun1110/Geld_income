@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useState } from "react";
-import { SteppingButton } from "./steppingButton";
 
 export const Balance = (props) => {
   const { button } = props;
@@ -32,7 +31,7 @@ export const Balance = (props) => {
           </ul>
         </div>
       </div>
-      <div className="absolute mt-80 w-96 flex flex-col items-center">
+      <div className="absolute mt-60 w-96 flex flex-col items-center">
         <div className="bg-[#0166FF] w-12 h-12 rounded-[50%] flex items-center justify-center  ">
           <Image src="/zoos.png" width={30} height={22} className="w-7 h-5" />
         </div>
@@ -48,8 +47,6 @@ export const Balance = (props) => {
         <div className="text-xs font-normal text-[#475569] mt-3">
           How much cash do you have in your wallet?
         </div>
-
-        <SteppingButton />
 
         {/* <button className="w-[100%] h-12 rounded-2xl bg-[#0166FF] mt-8 bg-p-2 mx-auto text-white text-base font-normal">
           Confirm

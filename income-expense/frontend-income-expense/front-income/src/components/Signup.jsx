@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export const Signup = ({ handleSwitchForm, setOnSignUp }) => {
   const [name, setName] = useState("");
@@ -9,6 +10,7 @@ export const Signup = ({ handleSwitchForm, setOnSignUp }) => {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const signUpHandler = async () => {
     try {
@@ -24,6 +26,7 @@ export const Signup = ({ handleSwitchForm, setOnSignUp }) => {
       } else {
         setError("wrong password");
       }
+      router.push(`/steps`);
     } catch (error) {
       console.log(error.response.data);
       setError(error.response.data);

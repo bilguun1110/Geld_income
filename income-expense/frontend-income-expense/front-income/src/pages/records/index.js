@@ -1,11 +1,11 @@
 import React from "react";
 import Image from "next/image";
 import { Records } from "@/components/Records";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const Home = () => {
   const router = useRouter();
-
+  const pathname = usePathname();
   const dashHandler = async () => {
     try {
       router.push(`/dashboard`);
@@ -25,8 +25,9 @@ const Home = () => {
           />
           <button
             onClick={dashHandler}
-            className="curser-pointer "
-            style={{ hover: "background-color-black" }}
+            className={`curser-pointer ${
+              pathname === "/records" ? "text-gray-500" : "text-black"
+            }`}
           >
             Dashboard
           </button>

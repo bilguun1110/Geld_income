@@ -13,12 +13,9 @@ export default function Home() {
   const Step = stepper[step];
 
   const changePage = () => {
+    if (step === 2) return router.push("/dashboard");
     setStep(step + 1);
   };
-
-  if (stepper.length === stepper[2]) {
-    router.push(`/dashboard`);
-  }
 
   // if (step < stepper.length) {
   //   <Step />;
@@ -30,9 +27,9 @@ export default function Home() {
         <Step />
         <button
           onClick={changePage}
-          className="w-[384px] h-12 rounded-2xl bg-[#0166FF] mt-[300px] top-[400px] bg-p-2 mx-auto text-white text-base font-normal"
+          className="w-[384px] h-12 rounded-2xl bg-[#0166FF] mt-[300px] top-[400px] bg-p-2 mx-auto text-white text-xl font-normal"
         >
-          Confirm
+          {step === 2 ? "Go To Dashboard" : "Confirm"}
         </button>
       </div>
     </div>

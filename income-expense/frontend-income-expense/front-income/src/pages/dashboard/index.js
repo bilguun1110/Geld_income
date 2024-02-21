@@ -4,7 +4,7 @@ import { Dashboard } from "@/components/DashBoard";
 import { useRouter, usePathname } from "next/navigation";
 import { useState } from "react";
 
-const Home = () => {
+const DashBoardPage = () => {
   const router = useRouter();
   const pathname = usePathname();
   const [color, setColor] = useState(false);
@@ -58,4 +58,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default DashBoardPage;

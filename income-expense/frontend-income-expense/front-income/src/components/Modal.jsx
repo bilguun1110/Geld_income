@@ -1,8 +1,14 @@
 import Image from "next/image";
 import { useState } from "react";
-
+import { IoMdArrowDropdown } from "react-icons/io";
+import { Category } from "./Category";
 export const Modal = ({ isOpen, onClose }) => {
   const [color, setColor] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleShowModal = () => {
+    setOpen(!open);
+  };
 
   if (!isOpen) return null;
   return (
@@ -68,14 +74,19 @@ export const Modal = ({ isOpen, onClose }) => {
             </div>
             <div>
               <p>Category</p>
-              <select
-                className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg border-[1px]"
-                name="dd"
-                id=""
-              >
-                <option value="">Choose</option>
-              </select>
+              <div className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg curser-pointer border-[1px] flex items-center justify-end pr-3">
+                <IoMdArrowDropdown
+                  onClick={handleShowModal}
+                  width={15}
+                  height={15}
+                  style={{ cursor: "pointer" }}
+                />
+              </div>
+              <div className="z-20 absolute">
+                <Category isOpen={open} onClose={handleShowModal}></Category>
+              </div>
             </div>
+
             <div className="flex gap-3">
               <div className="w-[50%]">
                 <p>Date</p>

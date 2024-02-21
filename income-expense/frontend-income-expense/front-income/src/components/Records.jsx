@@ -107,7 +107,7 @@ export const Records = () => {
           placeholder="Search"
           className="w-[100%] h-8 rounded bg-[#F3F4F6] p-4 border-solid border-[1px]"
         />
-        <div className="text-base ">
+        <div className="text-base flex flex-col gap-2">
           <h3 className="font-semibold mb-4">Types</h3>
           <div className="flex font-normal items-center gap-1">
             <IoIosRadioButtonOff />

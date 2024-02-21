@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { Records } from "@/components/Records";
 import { usePathname, useRouter } from "next/navigation";
+import { Category } from "@/components/Category";
 
 const Home = () => {
   const router = useRouter();
@@ -48,6 +49,7 @@ const Home = () => {
       <div>
         <Records />
       </div>
+      <Category />
     </div>
   );
 };

@@ -11,6 +11,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { DoughnutChart } from "./PieChart";
 
 ChartJS.register(
   Title,
@@ -60,14 +61,18 @@ export const Dashboard = () => {
     labels: ["Jul", "Jul ", " Jul", "Jul", "Jul", "Jul"],
     datasets: [
       {
+        label: "Income",
         backgroundColor: "#84CC16",
         borderColor: "rgba(75, 192, 192, 1)",
         borderWidth: 0,
+        barThickness: 15,
         data: [3200000, 3200000, 3200000, 3200000, 3200000, 3200000],
       },
       {
         data: [2200000, 2200000, 2200000, 2200000, 2200000, 2200000],
         backgroundColor: ["#F97316"],
+        barThickness: 15,
+        label: "Expense",
       },
     ],
   };
@@ -219,16 +224,22 @@ export const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className="w-[588px]  rounded-xl bg-white mt-6  ">
-        <div className="w-[100%] h-[56px] border-solid font-semibold text-base border-b-2 px-6 py-4">
-          Income - Expense
+      <div className="w-[1200px] flex gap-6">
+        <div className="w-[588px]  rounded-xl bg-white mt-6  ">
+          <div className="w-[100%] h-[56px] border-solid font-semibold text-base border-b-2 px-6 py-4">
+            Income - Expense
+          </div>
+          <Bar
+            className="w-[100%] h-[226px] px-3 py-4 "
+            data={data}
+            options={options}
+          />
         </div>
-        <Bar
-          className="w-[100%] h-[226px] px-3 py-4 "
-          data={data}
-          options={options}
-        />
+        <div className="w-[600px] h-[360px] rounded-xl mt-[25px] bg-white">
+          <DoughnutChart />
+        </div>
       </div>
+
       <div className="w-[100%] bg-white rounded-xl mt-6">
         <div className="w-[100%] h-[56px] px-6 py-4 font-semibold text-base border-b-2 ">
           Last Records

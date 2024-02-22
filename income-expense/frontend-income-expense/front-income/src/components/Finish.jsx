@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 
 export const Finish = () => {
   return (
@@ -36,9 +35,6 @@ export const Finish = () => {
           Your very first account has been created. Now continue to dashboard
           and start tracking
         </div>
-        {/* <button className="w-[100%] h-12 rounded-2xl bg-[#0166FF] mt-8 bg-p-2 mx-auto text-white text-xl font-normal">
-          Go to Dashboard
-        </button> */}
       </div>
     </div>
   );

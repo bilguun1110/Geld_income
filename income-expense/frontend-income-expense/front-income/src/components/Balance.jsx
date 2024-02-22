@@ -47,10 +47,6 @@ export const Balance = (props) => {
         <div className="text-xs font-normal text-[#475569] mt-3">
           How much cash do you have in your wallet?
         </div>
-
-        {/* <button className="w-[100%] h-12 rounded-2xl bg-[#0166FF] mt-8 bg-p-2 mx-auto text-white text-base font-normal">
-          Confirm
-        </button> */}
       </div>
     </div>
   );

@@ -12,11 +12,7 @@ const options = [
   { value: "euro", option: "EUR-Europian Euro" },
 ];
 
-export const Currency = (props) => {
-  const { button } = props;
-
-  const text = "Confirm";
-
+export const Currency = () => {
   const [currencies, setCurrencies] = useState("");
 
   const handleSelect = (event) => {
@@ -67,13 +63,6 @@ export const Currency = (props) => {
             transaction in other currencies will be calculated based on this one
           </div>
         </div>
-        {/* <StepperButton onClick={button} text={text} /> */}
-        {/* <button
-          onClick={button}
-          className="w-[100%] h-12 rounded-2xl bg-[#0166FF] mt-8 bg-p-2 mx-auto text-white text-base font-normal"
-        >
-          Confirm
-        </button> */}
       </div>
     </div>
   );

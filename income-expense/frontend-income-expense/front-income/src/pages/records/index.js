@@ -49,7 +49,6 @@ const Home = () => {
       <div>
         <Records />
       </div>
-      <Category />
     </div>
   );
 };

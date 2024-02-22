@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Category } from "./Category";
-export const Modal = ({ isOpen, onClose }) => {
+export const Modal = ({ isOpen, onCloseBig }) => {
   const [color, setColor] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -29,7 +29,7 @@ export const Modal = ({ isOpen, onClose }) => {
             Add Record
           </p>
           <Image
-            onClick={onClose}
+            onClick={onCloseBig}
             src="/X.png"
             width={24}
             height={24}

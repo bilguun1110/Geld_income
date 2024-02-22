@@ -3,6 +3,7 @@ import Image from "next/image";
 import { PiForkKnifeFill } from "react-icons/pi";
 import { HiComputerDesktop } from "react-icons/hi2";
 import { AddCateModal } from "./AddCateModal";
+
 import { useState } from "react";
 import {
   PiGiftFill,
@@ -14,13 +15,10 @@ import {
 export const Category = ({ isOpen, onClose }) => {
   const [open, setOpen] = useState(false);
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCategory = () => {
+    setOpen(!open);
   };
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
   const options = [
     { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
     { icon: <PiGiftFill size={24} color="#FF4545" />, name: "Gift" },
@@ -50,15 +48,18 @@ export const Category = ({ isOpen, onClose }) => {
           src="/plus2.png"
           width={20}
           height={20}
-          onClick={handleOpen}
+          onClick={handleCategory}
           className="w-5 h-5"
           style={{ cursor: "pointer" }}
         />{" "}
-        Add Category
+        <p>Add Category</p>
       </div>
       <hr />
-      <div className="z-30 absolute">
-        {/* <AddCateModal isOpenTwo={open} onCloseTwo={handleClose} /> */}
+      <div className="z-30  ">
+        <AddCateModal
+          isOpenTwo={open}
+          onCloseTwo={handleCategory}
+        ></AddCateModal>
       </div>
 
       <div className="">
@@ -66,7 +67,7 @@ export const Category = ({ isOpen, onClose }) => {
           <div
             key={idx}
             onClick={onClose}
-            className=" h-[56px] p-4  flex gap-3"
+            className=" h-[56px] p-4  flex gap-3 cursor-pointer"
           >
             <div>{icon}</div>
             <div>{name}</div>

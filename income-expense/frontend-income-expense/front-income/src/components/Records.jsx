@@ -20,6 +20,7 @@ export const Records = () => {
   const handleOpen = () => {
     setOpen(true);
   };
+
   const categories = [
     {
       name: "Food & Drinks",
@@ -267,7 +268,7 @@ export const Records = () => {
         </div>
       </div>
       <div className=" ">
-        <Modal isOpen={open} onClose={handleClose}></Modal>
+        <Modal isOpen={open} onCloseBig={handleClose}></Modal>
       </div>
     </div>
   );

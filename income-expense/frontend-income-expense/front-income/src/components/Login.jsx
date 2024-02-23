@@ -8,7 +8,7 @@ export const Login = ({ handleSwitchForm }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const router = useRouter();
+  const route = useRouter();
 
   const loginHandler = async () => {
     try {
@@ -18,11 +18,10 @@ export const Login = ({ handleSwitchForm }) => {
       });
 
       localStorage.setItem("token", result.data.token);
-      router.push(`/dashboard
-      `);
+      route.push("/dashboard");
     } catch (error) {
-      console.log(error.response.data);
-      setError(error.response.data);
+      console.log(error.message);
+      setError(error.message);
     }
   };
 

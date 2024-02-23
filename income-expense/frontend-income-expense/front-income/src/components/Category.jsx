@@ -12,7 +12,7 @@ import {
   PiTShirtFill,
 } from "react-icons/pi";
 
-export const Category = ({ isOpen, onClose }) => {
+export const Category = ({ isOpen, onClose, handleCateModal }) => {
   const [open, setOpen] = useState(false);
 
   const handleCategory = () => {
@@ -48,7 +48,7 @@ export const Category = ({ isOpen, onClose }) => {
           src="/plus2.png"
           width={20}
           height={20}
-          onClick={handleCategory}
+          onClick={handleCateModal}
           className="w-5 h-5"
           style={{ cursor: "pointer" }}
         />{" "}
@@ -56,10 +56,10 @@ export const Category = ({ isOpen, onClose }) => {
       </div>
       <hr />
       <div className="z-30  ">
-        <AddCateModal
+        {/* <AddCateModal
           isOpenTwo={open}
-          onCloseTwo={handleCategory}
-        ></AddCateModal>
+          onCloseTwo={handleCateModal}
+        ></AddCateModal> */}
       </div>
 
       <div className="">

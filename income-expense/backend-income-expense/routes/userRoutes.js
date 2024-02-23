@@ -10,7 +10,7 @@ const useRouter = express.Router();
 useRouter.post("/signup", createUserService);
 
 //Login
-useRouter.post("/login", loginMiddleWare, loginUserService);
+useRouter.post("/login", loginMiddleWare);
 useRouter.post("/token", tokenMiddleChecker);
 
 export default useRouter;

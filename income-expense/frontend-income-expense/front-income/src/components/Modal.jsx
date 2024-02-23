@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Category } from "./Category";
-export const Modal = ({ isOpen, onCloseBig }) => {
+export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
   const [color, setColor] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -83,7 +83,11 @@ export const Modal = ({ isOpen, onCloseBig }) => {
                 />
               </div>
               <div className="z-20 absolute">
-                <Category isOpen={open} onClose={handleShowModal}></Category>
+                <Category
+                  isOpen={open}
+                  onClose={handleShowModal}
+                  handleCateModal={handleCateModal}
+                ></Category>
               </div>
             </div>
 

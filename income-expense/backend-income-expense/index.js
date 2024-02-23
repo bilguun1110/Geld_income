@@ -22,27 +22,25 @@ app.listen(port, () => {
 
 const CONNTECTION_STRING =
   "postgresql://binderiyabilguun:lwF5ry9UQSad@ep-delicate-cherry-a1u3wem7.ap-southeast-1.aws.neon.tech/Leap-1D?sslmode=require";
-
 export const client = new pg.Client({
   connectionString: CONNTECTION_STRING,
 });
 
-const createUserTable = async () => {
-  const userTableCreateQuery = `CREATE TABLE IF NOT EXISTS users(
+const createUserIncome = async () => {
+  const userIncomeCreateQuery = `CREATE TABLE IF NOT EXISTS userIncome(
     id SERIAL PRIMARY KEY,
-    username TEXT NOT NULL,
+    name TEXT NOT NULL,
     email TEXT NOT NULL,
-    password SMALLIT
-    
-    
+    password TEXT NOT NULL
   )`;
 
-  const result = await client.query(userTableCreateQuery);
+  await client.query(userIncomeCreateQuery);
 };
 
 const dbInit = async () => {
   await client.connect();
-  await createUserTable();
+  // await createUserTable();
+  await createUserIncome();
 };
 
 dbInit();

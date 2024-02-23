@@ -5,20 +5,21 @@ import { IoEyeSharp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-
 import React from "react";
-
 import { Modal } from "./Modal";
+import { AddCateModal } from "./AddCateModal";
 
 export const Records = () => {
   const [open, setOpen] = React.useState(false);
+  const [cateOpen, setCateOpen] = React.useState(false);
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleCateModal = () => {
+    if (open) setOpen(false);
+    setCateOpen(!cateOpen);
   };
 
-  const handleOpen = () => {
-    setOpen(true);
+  const handleBigModal = () => {
+    setOpen(!open);
   };
 
   const categories = [
@@ -97,7 +98,7 @@ export const Records = () => {
           <h3 className="font-semibold text-2xl">Records</h3>
           <button
             type="button"
-            onClick={handleOpen}
+            onClick={handleBigModal}
             className="w-[250px] h-[32px] rounded-[20px] bg-[#0166FF] text-white text-base gap-2 font-normal flex justify-center items-center"
           >
             <FiPlus width={20} height={20} className="w-[20px] h-[20px]" />
@@ -268,7 +269,16 @@ export const Records = () => {
         </div>
       </div>
       <div className=" ">
-        <Modal isOpen={open} onCloseBig={handleClose}></Modal>
+        <Modal
+          isOpen={open}
+          onCloseBig={handleBigModal}
+          handleCateModal={handleCateModal}
+        ></Modal>
+
+        <AddCateModal
+          isOpenAddCate={cateOpen}
+          onCloseAddCate={handleCateModal}
+        ></AddCateModal>
       </div>
     </div>
   );

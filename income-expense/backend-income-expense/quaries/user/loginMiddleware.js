@@ -16,8 +16,6 @@ export const loginMiddleWare = async (req, res, next) => {
     const comparePassword = compareHash(password, respons.rows[0].password);
     console.log(comparePassword);
 
-    // const comparePassword = compareHash(paraPassword, exactUser.password);
-
     if (!comparePassword) {
       res.status(400).send("wrong  or password");
     } else {

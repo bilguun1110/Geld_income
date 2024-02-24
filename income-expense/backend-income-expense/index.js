@@ -16,10 +16,6 @@ app.listen(port, () => {
   console.log(`localhost:${port}`);
 });
 
-// app.get("", async (req, res) => {
-//   res.send("working");
-// });
-
 const CONNTECTION_STRING =
   "postgresql://binderiyabilguun:lwF5ry9UQSad@ep-delicate-cherry-a1u3wem7.ap-southeast-1.aws.neon.tech/Leap-1D?sslmode=require";
 export const client = new pg.Client({

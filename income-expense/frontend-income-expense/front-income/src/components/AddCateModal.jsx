@@ -1,15 +1,16 @@
 import React from "react";
 import { GoHomeFill } from "react-icons/go";
 import { IoMdArrowDropdown } from "react-icons/io";
-import { CiCircleRemove } from "react-icons/ci";
+import { useState } from "react";
+import Image from "next/image";
+import { SecondCategory } from "./SecondCategory";
 
-export const AddCateModal = ({
-  onCloseTwo,
-  isOpenTwo,
-  cateOpen,
-  isOpenAddCate,
-  onCloseAddCate,
-}) => {
+export const AddCateModal = ({ isOpenAddCate, onCloseAddCate }) => {
+  const [openSecondCate, setOpenSecondCate] = useState(false);
+
+  const handleShowSecondCate = () => {
+    setOpenSecondCate(!openSecondCate);
+  };
   if (!isOpenAddCate) return null;
   return (
     <div
@@ -29,8 +30,9 @@ export const AddCateModal = ({
             Add Category
           </p>
 
-          <CiCircleRemove
+          <Image
             onClick={onCloseAddCate}
+            src={"/X.png"}
             width={24}
             height={24}
             style={{ cursor: "pointer" }}
@@ -47,14 +49,28 @@ export const AddCateModal = ({
                 height={17}
                 className="w-[18px] h-[17px]"
               />
-              <IoMdArrowDropdown width={10} height={10} />
+              <IoMdArrowDropdown
+                onClick={handleShowSecondCate}
+                width={10}
+                height={10}
+                style={{ cursor: "pointer" }}
+              />
             </div>
             <div className="w-[350px] h-[48px]  rounded-lg bg-[#F9FAFB] border-[1px] p-3 flex items-center gap-8 ">
               <input type="text" placeholder="Name" className="w-[80%] h-6" />
               <IoMdArrowDropdown width={10} height={10} />
             </div>
           </div>
-          <button className="w-[446px] h-[40px] bg-[#16A34A] rounded-[20px]"></button>
+          <button
+            onClick={onCloseAddCate}
+            className="w-[446px] h-[40px] curser-pointer bg-[#16A34A] rounded-[20px]"
+          ></button>
+          <div className="ml-[30px] bottom-[200px]">
+            <SecondCategory
+              isOpenSecond={openSecondCate}
+              onCloseSecondCate={handleShowSecondCate}
+            />
+          </div>
         </div>
       </div>
     </div>

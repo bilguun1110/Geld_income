@@ -55,12 +55,6 @@ export const Category = ({ isOpen, onClose, handleCateModal }) => {
         <p>Add Category</p>
       </div>
       <hr />
-      <div className="z-30  ">
-        {/* <AddCateModal
-          isOpenTwo={open}
-          onCloseTwo={handleCateModal}
-        ></AddCateModal> */}
-      </div>
 
       <div className="">
         {options.map(({ icon, name }, idx) => (

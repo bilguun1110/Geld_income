@@ -1,7 +1,6 @@
 import { createUser } from "../quaries/user/createUsers.js";
 import jwt from "jsonwebtoken";
-
-import fs from "fs";
+// import { client } from "../../index.js";
 
 export const createUserService = async (req, res) => {
   try {
@@ -13,23 +12,25 @@ export const createUserService = async (req, res) => {
 };
 
 export const loginUserService = async (req, res) => {
-  const { email: paraEmail } = req.body;
-  const userDb =
-    // "/Users/bilguun/Desktop/Geld_income/income-expense/backend-income-expense/models/users.json";
-    "/Users/23LP0562/Desktop/Geld_income/income-expense/backend-income-expense/models/users.json";
-
+  // const { email } = req.body;
+  const query = `SELECT * FROM userIncome WHERE email = $1`;
   try {
-    const oldUsersJson = await fs.readFileSync(userDb, "utf-8");
-    const oldUsers = JSON.parse(oldUsersJson);
+    const { email } = req.body;
+    // const oldUsersJson = await fs.readFileSync(userDb, "utf-8");
+    // const oldUsers = JSON.parse(oldUsersJson);
 
-    const exactUser = oldUsers.find(({ email }) => email === paraEmail);
+    // const exactUser = oldUsers.find(({ email }) => email === paraEmail);
+
+    const response = await client.query(query, [email]);
+    console.log(response.rows);
+
     const token = jwt.sign(
-      { email: paraEmail },
+      { email },
       process.env.JWT_SECRET || "defaultSecret",
       { expiresIn: "1h" }
     );
 
-    if (!exactUser) {
+    if (!response) {
       return "password or username wrong";
     }
 

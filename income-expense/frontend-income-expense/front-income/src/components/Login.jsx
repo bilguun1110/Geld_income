@@ -20,8 +20,8 @@ export const Login = ({ handleSwitchForm }) => {
       localStorage.setItem("token", result.data.token);
       route.push("/dashboard");
     } catch (error) {
-      console.log(error.message);
-      setError(error.message);
+      console.log(error.response.data);
+      setError(error.response.data);
     }
   };
 

@@ -5,7 +5,7 @@ import { Category } from "./Category";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-export const Modal = ({ isOpen, onCloseBig, handleCateModal, changeName }) => {
+export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
   const router = useRouter();
   const [color, setColor] = useState(false);
   const [open, setOpen] = useState(false);
@@ -14,7 +14,8 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal, changeName }) => {
   const [time, setTime] = useState("");
   const [payee, setPayee] = useState("");
   const [note, setNote] = useState("");
-  const [recordType, setRecordType] = useState("");
+  const [recordType, setRecordType] = useState(false);
+  const [names, setNames] = useState("");
 
   const handleShowModal = () => {
     setOpen(!open);
@@ -73,8 +74,6 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal, changeName }) => {
                 onClick={() => {
                   setColor(true);
                 }}
-                value={recordType}
-                onChange={(event) => setRecordType(event.target.value)}
                 className={`w-[50%] py-2 h-[100%] rounded-[100px] ${
                   color
                     ? "text-[#F9FAFB] bg-[#0166FF]"
@@ -109,17 +108,19 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal, changeName }) => {
             </div>
             <div>
               <p>Category</p>
-              <div className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg curser-pointer border-[1px] flex items-center justify-end pr-3">
-                <IoMdArrowDropdown
-                  onClick={handleShowModal}
-                  width={15}
-                  height={15}
-                  style={{ cursor: "pointer" }}
-                />
+              <div className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg curser-pointer border-[1px] flex items-center justify-between pr-3">
+                <div className="pl-3">{names}</div>
+                <div>
+                  <IoMdArrowDropdown
+                    onClick={handleShowModal}
+                    width={15}
+                    height={15}
+                    style={{ cursor: "pointer" }}
+                  />
+                </div>
               </div>
               <div className="z-20 absolute">
                 <Category
-                  changeName={changeName}
                   isOpen={open}
                   onClose={handleShowModal}
                   handleCateModal={handleCateModal}

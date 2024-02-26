@@ -2,15 +2,44 @@ import Image from "next/image";
 import { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Category } from "./Category";
-export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
+import axios from "axios";
+import { useRouter } from "next/navigation";
+
+export const Modal = ({ isOpen, onCloseBig, handleCateModal, changeName }) => {
+  const router = useRouter();
   const [color, setColor] = useState(false);
   const [open, setOpen] = useState(false);
+  const [amount, setAmount] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [payee, setPayee] = useState("");
+  const [note, setNote] = useState("");
+  const [recordType, setRecordType] = useState("");
 
   const handleShowModal = () => {
     setOpen(!open);
   };
 
   if (!isOpen) return null;
+
+  const recordHandler = async () => {
+    try {
+      console.log(amount);
+      const result = await axios.post("http://localhost:8000/records", {
+        amount: Number(amount),
+        date: date,
+        time: time,
+        payee: payee,
+        note: note,
+      });
+
+      console.log(result);
+      onCloseBig(true);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <div
       style={{
@@ -44,6 +73,8 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
                 onClick={() => {
                   setColor(true);
                 }}
+                value={recordType}
+                onChange={(event) => setRecordType(event.target.value)}
                 className={`w-[50%] py-2 h-[100%] rounded-[100px] ${
                   color
                     ? "text-[#F9FAFB] bg-[#0166FF]"
@@ -56,6 +87,8 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
                 onClick={() => {
                   setColor(false);
                 }}
+                value={recordType}
+                onChange={(event) => setRecordType(event.target.value)}
                 className={`w-[50%] py-2 h-[100%] rounded-[100px] ${
                   color
                     ? "text-[#00000] bg-[#F3F4F6]"
@@ -68,6 +101,8 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
             <div className="w-[100%] px-3 py-4 h-[76px] bg-[#F3F4F6] rounded-lg  border-[1px]">
               <p className="font-normal text-base">Amount</p>
               <input
+                value={amount}
+                onChange={(event) => setAmount(event.target.value)}
                 placeholder="₮ 000.00"
                 className="bg-[#F3F4F6] text-xl font-normal"
               />
@@ -84,6 +119,7 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
               </div>
               <div className="z-20 absolute">
                 <Category
+                  changeName={changeName}
                   isOpen={open}
                   onClose={handleShowModal}
                   handleCateModal={handleCateModal}
@@ -94,27 +130,25 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
             <div className="flex gap-3">
               <div className="w-[50%]">
                 <p>Date</p>
-                <select
-                  className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg border-[1px] mt-2"
-                  name=""
-                  id=""
-                >
-                  <option value="">Oct 30, 2023</option>
-                </select>
+                <input
+                  value={date}
+                  onChange={(event) => setDate(event.target.value)}
+                  type="date"
+                  className=" w-[100%] h-[48px] p-2 bg-[#F9FAFB] rounded-lg border-[1px] mt-2 "
+                />
               </div>
               <div className="w-[50%]">
-                <p>Date</p>
-                <select
-                  className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg border-[1px] mt-2"
-                  name=""
-                  id=""
-                  placeholder="Choose"
-                >
-                  <option value="">4:15 PM</option>
-                </select>
+                <p>Time</p>
+                <input
+                  value={time}
+                  onChange={(event) => setTime(event.target.value)}
+                  type="time"
+                  className="w-[100%] h-[48px] p-2 bg-[#F9FAFB] rounded-lg border-[1px] mt-2"
+                />
               </div>
             </div>
             <button
+              onClick={recordHandler}
               className={`w-[100%] py-2 h-[100%] rounded-[100px] ${
                 color
                   ? "text-[#F9FAFB] bg-[#0166FF]"
@@ -128,18 +162,20 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
           <div className="w-[50%] p-6 flex flex-col gap-5">
             <div>
               <p className="text-base font-normal">Payee</p>
-              <select
-                className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg border-[1px] mt-2"
-                name="dd"
-                id=""
-              >
-                <option></option>
-              </select>
+              <input
+                value={payee}
+                onChange={(event) => setPayee(event.target.value)}
+                type="text"
+                placeholder="Write here"
+                className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg border-[1px] mt-2 p-4"
+              />
             </div>
             <div className="">
               <p className="text-base font-normal">Note</p>
 
               <textarea
+                value={note}
+                onChange={(event) => setNote(event.target.value)}
                 className="w-[100%] h-[250px] bg-[#F9FAFB] rounded-lg border-[1px] mt-2 p-4  "
                 name=""
                 id=""

@@ -33,10 +33,27 @@ const createUserIncome = async () => {
   await client.query(userIncomeCreateQuery);
 };
 
+const createRecord = async () => {
+  const userIncomeAddRecord = `CREATE TABLE IF NOT EXISTS records(
+    id SERIAL PRIMARY KEY,
+    userId TEXT,
+    amount INT,
+    category TEXT,
+    date DATE,
+    time TIME,
+    payee TEXT,
+    note TEXT,
+    recordType TEXT
+  )`;
+
+  await client.query(userIncomeAddRecord);
+};
+
 const dbInit = async () => {
   await client.connect();
-  // await createUserTable();
+
   await createUserIncome();
+  await createRecord();
 };
 
 dbInit();

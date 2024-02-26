@@ -14,6 +14,7 @@ import {
 
 export const Category = ({ isOpen, onClose, handleCateModal }) => {
   const [open, setOpen] = useState(false);
+  const [names, setNames] = useState("");
 
   const handleCategory = () => {
     setOpen(!open);
@@ -64,7 +65,12 @@ export const Category = ({ isOpen, onClose, handleCateModal }) => {
             className=" h-[56px] p-4  flex gap-3 cursor-pointer"
           >
             <div>{icon}</div>
-            <div>{name}</div>
+            <div
+              changeName={names}
+              onChange={(event) => setNames(event.target.value)}
+            >
+              {name}
+            </div>
           </div>
         ))}
       </div>

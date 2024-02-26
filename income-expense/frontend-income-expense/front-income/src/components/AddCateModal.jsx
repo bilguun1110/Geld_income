@@ -63,8 +63,10 @@ export const AddCateModal = ({ isOpenAddCate, onCloseAddCate }) => {
           </div>
           <button
             onClick={onCloseAddCate}
-            className="w-[446px] h-[40px] curser-pointer bg-[#16A34A] rounded-[20px]"
-          ></button>
+            className="w-[446px] h-[40px] text-white curser-pointer bg-[#16A34A] rounded-[20px]"
+          >
+            Add Category
+          </button>
           <div className="ml-[30px] bottom-[200px]">
             <SecondCategory
               isOpenSecond={openSecondCate}

@@ -12,7 +12,12 @@ import {
   PiTShirtFill,
 } from "react-icons/pi";
 
-export const Category = ({ isOpen, onClose, handleCateModal }) => {
+export const Category = ({
+  isOpen,
+
+  handleCateModal,
+  handleGetIconName,
+}) => {
   const [open, setOpen] = useState(false);
 
   const handleCategory = () => {
@@ -20,21 +25,24 @@ export const Category = ({ isOpen, onClose, handleCateModal }) => {
   };
 
   const options = [
-    { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
-    { icon: <PiGiftFill size={24} color="#FF4545" />, name: "Gift" },
-    { icon: <PiForkKnifeFill size={24} color="#FB8A22" />, name: "Food" },
-    { icon: <PiWineFill size={24} color="#A804AB" />, name: "Drink" },
-    { icon: <PiTaxiFill size={24} color="#EAB308" />, name: "Taxi" },
-    { icon: <PiTShirtFill size={24} color="#EAB308" />, name: "Shopping" },
+    { Icon: () => <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
+    { Icon: () => <PiGiftFill size={24} color="#FF4545" />, name: "Gift" },
+    { Icon: () => <PiForkKnifeFill size={24} color="#FB8A22" />, name: "Food" },
+    { Icon: () => <PiWineFill size={24} color="#A804AB" />, name: "Drink" },
+    { Icon: () => <PiTaxiFill size={24} color="#EAB308" />, name: "Taxi" },
     {
-      icon: <HiComputerDesktop size={24} color="#D1D5DB" />,
+      Icon: () => <PiTShirtFill size={24} color="#EAB308" />,
+      name: "Shopping",
+    },
+    {
+      Icon: () => <HiComputerDesktop size={24} color="#D1D5DB" />,
       name: "Communication",
     },
-    { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
-    { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
-    { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
-    { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
-    { icon: <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
+    { Icon: () => <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
+    { Icon: () => <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
+    { Icon: () => <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
+    { Icon: () => <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
+    { Icon: () => <GoHomeFill size={24} color="#0166FF" />, name: " Home" },
   ];
   if (!isOpen) return null;
 
@@ -57,13 +65,14 @@ export const Category = ({ isOpen, onClose, handleCateModal }) => {
       <hr />
 
       <div className="">
-        {options.map(({ icon, name }, idx) => (
+        {options.map(({ name, Icon }, idx) => (
           <div
             key={idx}
-            onClick={onClose}
+            id={name}
+            onClick={handleGetIconName}
             className=" h-[56px] p-4  flex gap-3 cursor-pointer"
           >
-            <div>{icon}</div>
+            <Icon />
             <div>{name}</div>
           </div>
         ))}

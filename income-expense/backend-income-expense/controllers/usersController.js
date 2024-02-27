@@ -13,7 +13,7 @@ export const createUserService = async (req, res) => {
 };
 
 export const loginUserService = async (req, res) => {
-  const query = `SELECT * FROM userIncome WHERE email = $1`;
+  const query = `SELECT * FROM users WHERE email = $1`;
   try {
     const { email } = req.body;
 

@@ -20,10 +20,13 @@ const CONNTECTION_STRING =
   "postgresql://binderiyabilguun:lwF5ry9UQSad@ep-delicate-cherry-a1u3wem7.ap-southeast-1.aws.neon.tech/Leap-1D?sslmode=require";
 export const client = new pg.Client({
   connectionString: CONNTECTION_STRING,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 const createUserIncome = async () => {
-  const userIncomeCreateQuery = `CREATE TABLE IF NOT EXISTS userIncome(
+  const userIncomeCreateQuery = `CREATE TABLE IF NOT EXISTS users(
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     email TEXT NOT NULL,
@@ -43,7 +46,7 @@ const createRecord = async () => {
     time TIME,
     payee TEXT,
     note TEXT,
-    recordType TEXT
+    expense BOOL
   )`;
 
   await client.query(userIncomeAddRecord);
@@ -51,9 +54,16 @@ const createRecord = async () => {
 
 const dbInit = async () => {
   await client.connect();
+  await client.query("SET statement_timeout = 0");
 
   await createUserIncome();
   await createRecord();
 };
 
 dbInit();
+
+client.on("error", async (error, cl) => {
+  if (error) {
+    console.log(error, "eroeoreoroeroeoro");
+  }
+});

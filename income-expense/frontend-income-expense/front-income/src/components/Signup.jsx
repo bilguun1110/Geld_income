@@ -16,7 +16,7 @@ export const Signup = ({ handleSwitchForm, setOnSignUp }) => {
     try {
       const result = await axios.post("http://localhost:8000/signup", {
         email: email,
-        username: name,
+        name: name,
         password: password,
         rePassword: rePassword,
       });

@@ -2,7 +2,7 @@ import { compareHash } from "../../util/password-hash.js";
 import { client } from "../../index.js";
 
 export const loginMiddleWare = async (req, res, next) => {
-  const query = `SELECT * FROM userIncome WHERE email = $1`;
+  const query = `SELECT * FROM users WHERE email = $1`;
 
   try {
     const { password, email } = req.body;

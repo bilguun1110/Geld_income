@@ -5,13 +5,14 @@ import { IoEyeSharp } from "react-icons/io5";
 import { FiPlus } from "react-icons/fi";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
-import React from "react";
+import React, { useState } from "react";
 import { Modal } from "./Modal";
 import { AddCateModal } from "./AddCateModal";
 
 export const Records = () => {
   const [open, setOpen] = React.useState(false);
   const [cateOpen, setCateOpen] = React.useState(false);
+  const [resetKey, setResetKey] = useState(10);
 
   const handleCateModal = () => {
     if (open) setOpen(false);
@@ -20,6 +21,7 @@ export const Records = () => {
 
   const handleBigModal = () => {
     setOpen(!open);
+    setResetKey(resetKey + 1);
   };
 
   const categories = [
@@ -176,7 +178,7 @@ export const Records = () => {
           </div>
           <div>
             <input type="range" id="" name="" min="0" max="100" />
-            <label for="volume">100</label>
+            <label htmlFor="volume">100</label>
           </div>
         </div>
       </div>
@@ -270,6 +272,7 @@ export const Records = () => {
       </div>
       <div className=" ">
         <Modal
+          key={resetKey}
           isOpen={open}
           onCloseBig={handleBigModal}
           handleCateModal={handleCateModal}

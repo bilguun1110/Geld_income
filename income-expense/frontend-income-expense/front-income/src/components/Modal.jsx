@@ -3,10 +3,8 @@ import { useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Category } from "./Category";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
-  const router = useRouter();
   const [color, setColor] = useState(false);
   const [open, setOpen] = useState(false);
   const [amount, setAmount] = useState("");
@@ -15,7 +13,12 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
   const [payee, setPayee] = useState("");
   const [note, setNote] = useState("");
   const [recordType, setRecordType] = useState(false);
-  const [names, setNames] = useState("");
+  const [iconName, setIconName] = useState("");
+
+  const handleGetIconName = (e) => {
+    setIconName(e.currentTarget.id);
+    handleShowModal();
+  };
 
   const handleShowModal = () => {
     setOpen(!open);
@@ -32,6 +35,8 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
         time: time,
         payee: payee,
         note: note,
+        category: iconName,
+        expense: recordType,
       });
 
       console.log(result);
@@ -72,6 +77,7 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
             <div className="w-[100%]] h-[40px] rounded-[100px] text-base font-normal bg-[#F3F4F6] ">
               <button
                 onClick={() => {
+                  setRecordType(true);
                   setColor(true);
                 }}
                 className={`w-[50%] py-2 h-[100%] rounded-[100px] ${
@@ -84,10 +90,9 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
               </button>
               <button
                 onClick={() => {
+                  setRecordType(false);
                   setColor(false);
                 }}
-                value={recordType}
-                onChange={(event) => setRecordType(event.target.value)}
                 className={`w-[50%] py-2 h-[100%] rounded-[100px] ${
                   color
                     ? "text-[#00000] bg-[#F3F4F6]"
@@ -109,7 +114,8 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
             <div>
               <p>Category</p>
               <div className="w-[100%] h-[48px] bg-[#F9FAFB] rounded-lg curser-pointer border-[1px] flex items-center justify-between pr-3">
-                <div className="pl-3">{names}</div>
+                <div className="pl-3 ">{iconName}</div>
+
                 <div>
                   <IoMdArrowDropdown
                     onClick={handleShowModal}
@@ -121,10 +127,11 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
               </div>
               <div className="z-20 absolute">
                 <Category
+                  handleGetIconName={handleGetIconName}
                   isOpen={open}
                   onClose={handleShowModal}
                   handleCateModal={handleCateModal}
-                ></Category>
+                />
               </div>
             </div>
 

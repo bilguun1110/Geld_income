@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import { Dashboard } from "@/components/DashBoard";
 import { useRouter, usePathname } from "next/navigation";
-import { useState } from "react";
+import { UserContext } from "@/components/provider/UserProvider";
 
 const DashBoardPage = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const [color, setColor] = useState(false);
+  const { user } = useContext(UserContext);
 
   const recordHandler = async () => {
     try {

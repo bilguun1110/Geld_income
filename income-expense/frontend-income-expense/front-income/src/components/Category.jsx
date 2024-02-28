@@ -2,7 +2,6 @@ import { GoHomeFill } from "react-icons/go";
 import Image from "next/image";
 import { PiForkKnifeFill } from "react-icons/pi";
 import { HiComputerDesktop } from "react-icons/hi2";
-import { AddCateModal } from "./AddCateModal";
 
 import { useState } from "react";
 import {

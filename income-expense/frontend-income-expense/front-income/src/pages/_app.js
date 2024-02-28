@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 import { Roboto } from "@next/font/google";
+import { UserProvider } from "@/components/provider/UserProvider";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -10,7 +11,9 @@ const roboto = Roboto({
 export default function App({ Component, pageProps }) {
   return (
     <div className={`${roboto.variable}`}>
-      <Component {...pageProps} />
+      <UserProvider>
+        <Component {...pageProps} />
+      </UserProvider>
     </div>
   );
 }

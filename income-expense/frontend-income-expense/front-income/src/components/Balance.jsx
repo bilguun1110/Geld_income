@@ -2,10 +2,6 @@ import Image from "next/image";
 import { useState } from "react";
 
 export const Balance = (props) => {
-  const { button } = props;
-
-  const text = "Confirm";
-
   const [email, setEmail] = useState("");
 
   const handleSelect = (event) => {

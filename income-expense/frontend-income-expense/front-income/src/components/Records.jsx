@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import { Modal } from "./Modal";
 import { AddCateModal } from "./AddCateModal";
 
-export const Records = () => {
+export const Records = ({ onClose }) => {
   const [open, setOpen] = React.useState(false);
   const [cateOpen, setCateOpen] = React.useState(false);
   const [resetKey, setResetKey] = useState(10);
@@ -17,6 +17,7 @@ export const Records = () => {
   const handleCateModal = () => {
     if (open) setOpen(false);
     setCateOpen(!cateOpen);
+    onClose;
   };
 
   const handleBigModal = () => {

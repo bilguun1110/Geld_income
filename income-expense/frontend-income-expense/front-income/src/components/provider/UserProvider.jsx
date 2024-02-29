@@ -43,11 +43,14 @@ export const UserProvider = ({ children }) => {
     const getRecord = async () => {
       try {
         const result = await axios.post("http://localhost:8000/getRecord", {
-          userEmail,
+          useremail: userEmail,
         });
+
+        console.log(result.data, "result");
         return result;
       } catch (error) {
-        throw new Error(error);
+        console.log(error);
+        res.send(error.message);
       }
     };
     getRecord();

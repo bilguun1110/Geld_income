@@ -8,11 +8,17 @@ import { IoIosArrowForward } from "react-icons/io";
 import React, { useState } from "react";
 import { Modal } from "./Modal";
 import { AddCateModal } from "./AddCateModal";
+import { UserContext } from "./provider/UserProvider";
+import { useContext } from "react";
 
 export const Records = ({ onClose }) => {
   const [open, setOpen] = React.useState(false);
   const [cateOpen, setCateOpen] = React.useState(false);
   const [resetKey, setResetKey] = useState(10);
+
+  const { userEmail } = useContext(UserContext);
+
+  console.log(userEmail, "reco");
 
   const handleCateModal = () => {
     if (open) setOpen(false);

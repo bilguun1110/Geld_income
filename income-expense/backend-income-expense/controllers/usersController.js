@@ -18,7 +18,6 @@ export const loginUserService = async (req, res) => {
     const { email } = req.body;
 
     const response = await client.query(query, [email]);
-    console.log("from userController respons.rows:", response.rows);
 
     const token = jwt.sign(
       { email },

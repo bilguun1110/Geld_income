@@ -39,6 +39,20 @@ export const UserProvider = ({ children }) => {
     verifyToken();
   }, []);
 
+  useEffect(() => {
+    const getRecord = async () => {
+      try {
+        const result = await axios.post("http://localhost:8000/getRecord", {
+          userEmail,
+        });
+        return result;
+      } catch (error) {
+        throw new Error(error);
+      }
+    };
+    getRecord();
+  });
+
   return (
     <UserContext.Provider value={{ userEmail }}>
       {children}

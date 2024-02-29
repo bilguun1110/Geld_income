@@ -7,7 +7,7 @@ import { UserContext } from "@/components/provider/UserProvider";
 const DashBoardPage = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const { user } = useContext(UserContext);
+  const { userEmail } = useContext(UserContext);
 
   const recordHandler = async () => {
     try {
@@ -16,7 +16,7 @@ const DashBoardPage = () => {
       console.log(error);
     }
   };
-
+  console.log(userEmail, "user");
   return (
     <div className="w-[1440px] m-auto">
       <div className="w-[100wh] flex h-18 bg-white px-[120px] py-[16px] justify-between">

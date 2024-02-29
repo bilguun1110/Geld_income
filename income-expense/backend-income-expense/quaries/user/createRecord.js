@@ -2,7 +2,7 @@ import { query } from "express";
 import { client } from "../../index.js";
 
 const createRecordSql = async (
-  userId,
+  userEmail,
   amount,
   category,
   date,
@@ -11,10 +11,10 @@ const createRecordSql = async (
   note,
   expense
 ) => {
-  const userRecordQuery = `INSERT INTO records (userId, amount, category, date, time, payee, note, expense) VALUES ($1, $2,$3,$4,$5,$6,$7,$8) RETURNING id`;
+  const userRecordQuery = `INSERT INTO records (userEmail, amount, category, date, time, payee, note, expense) VALUES ($1, $2,$3,$4,$5,$6,$7,$8) RETURNING id`;
 
   const recordId = await client.query(userRecordQuery, [
-    userId,
+    userEmail,
     amount,
     category,
     date,
@@ -27,12 +27,12 @@ const createRecordSql = async (
 };
 
 export const createRecord = async (req) => {
-  const { userId, amount, category, date, time, payee, note, expense } =
+  const { userEmail, amount, category, date, time, payee, note, expense } =
     req.body;
 
   try {
     const result = createRecordSql(
-      userId,
+      userEmail,
       amount,
       category,
       date,

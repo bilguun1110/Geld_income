@@ -6,7 +6,7 @@ import { createContext, useEffect, useState } from "react";
 export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [userEmail, setUserEmail] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -14,25 +14,34 @@ export const UserProvider = ({ children }) => {
 
     if (!token) {
       router.push("/");
+      return;
     }
 
     const verifyToken = async () => {
       try {
-        const email = await axios.post("http://localhost:8000/refresh", {
-          header: {
-            Authorization: `Bearer ${token}`,
-            "Content-type": "application/json",
-          },
-        });
-        setUser(email);
+        const { data } = await axios.post(
+          "http://localhost:8000/refresh",
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-type": "application/json",
+            },
+          }
+        );
+        setUserEmail(data);
         router.push("/dashboard");
       } catch (error) {
+        localStorage.removeItem("token");
         router.push("/");
       }
     };
     verifyToken();
   }, []);
-  console.log(user);
 
-  return <UserContext.Provider value={user}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={{ userEmail }}>
+      {children}
+    </UserContext.Provider>
+  );
 };

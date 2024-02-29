@@ -39,7 +39,7 @@ const createUserIncome = async () => {
 const createRecord = async () => {
   const userIncomeAddRecord = `CREATE TABLE IF NOT EXISTS records(
     id SERIAL PRIMARY KEY,
-    userId TEXT,
+    userEmail TEXT,
     amount INT,
     category TEXT,
     date DATE,

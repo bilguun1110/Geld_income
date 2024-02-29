@@ -1,8 +1,9 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { Category } from "./Category";
 import axios from "axios";
+import { UserContext } from "@/components/provider/UserProvider";
 
 export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
   const [color, setColor] = useState(false);
@@ -14,6 +15,8 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
   const [note, setNote] = useState("");
   const [recordType, setRecordType] = useState(false);
   const [iconName, setIconName] = useState("");
+
+  const { userEmail } = useContext(UserContext);
 
   const handleGetIconName = (e) => {
     setIconName(e.currentTarget.id);
@@ -37,6 +40,7 @@ export const Modal = ({ isOpen, onCloseBig, handleCateModal }) => {
         note: note,
         category: iconName,
         expense: recordType,
+        userEmail: userEmail,
       });
 
       console.log(result);

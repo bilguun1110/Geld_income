@@ -18,7 +18,7 @@ export const loginUserService = async (req, res) => {
     const { email } = req.body;
 
     const response = await client.query(query, [email]);
-    console.log(response.rows);
+    console.log("from userController respons.rows:", response.rows);
 
     const token = jwt.sign(
       { email },
@@ -30,7 +30,7 @@ export const loginUserService = async (req, res) => {
       return "password or username wrong";
     }
 
-    res.send({ token });
+    res.send({ token, response });
   } catch (error) {
     res.status(500).send(error.message);
   }

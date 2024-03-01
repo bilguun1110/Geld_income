@@ -2,12 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { Records } from "@/components/Records";
 import { usePathname, useRouter } from "next/navigation";
-import { UserContext } from "@/components/provider/UserProvider";
-import { useContext } from "react";
 
 const Home = () => {
-  const { userEmail } = useContext(UserContext);
-  console.log(userEmail, "record_page");
   const router = useRouter();
   const pathname = usePathname();
   const dashHandler = async () => {

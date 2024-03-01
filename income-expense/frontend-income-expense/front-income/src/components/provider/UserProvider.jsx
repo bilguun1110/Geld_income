@@ -7,6 +7,7 @@ export const UserContext = createContext({});
 
 export const UserProvider = ({ children }) => {
   const [userEmail, setUserEmail] = useState("");
+  const [userRecord, setUserRecord] = useState("");
   const router = useRouter();
 
   useEffect(() => {
@@ -41,23 +42,17 @@ export const UserProvider = ({ children }) => {
 
   useEffect(() => {
     const getRecord = async () => {
-      try {
-        const result = await axios.post("http://localhost:8000/getRecord", {
-          useremail: userEmail,
-        });
+      const result = await axios.post("http://localhost:8000/getRecord", {
+        useremail: userEmail,
+      });
 
-        console.log(result.data, "result");
-        return result;
-      } catch (error) {
-        console.log(error);
-        res.send(error.message);
-      }
+      setUserRecord(result.data);
     };
     getRecord();
-  });
+  }, [userEmail]);
 
   return (
-    <UserContext.Provider value={{ userEmail }}>
+    <UserContext.Provider value={{ userEmail, userRecord }}>
       {children}
     </UserContext.Provider>
   );

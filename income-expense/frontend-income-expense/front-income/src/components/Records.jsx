@@ -10,15 +10,13 @@ import { Modal } from "./Modal";
 import { AddCateModal } from "./AddCateModal";
 import { UserContext } from "./provider/UserProvider";
 import { useContext } from "react";
+import { color } from "framer-motion";
 
 export const Records = ({ onClose }) => {
   const [open, setOpen] = React.useState(false);
   const [cateOpen, setCateOpen] = React.useState(false);
   const [resetKey, setResetKey] = useState(10);
-
-  const { userEmail } = useContext(UserContext);
-
-  console.log(userEmail, "reco");
+  const { userRecord } = useContext(UserContext);
 
   const handleCateModal = () => {
     if (open) setOpen(false);
@@ -224,57 +222,57 @@ export const Records = ({ onClose }) => {
         </div>
         <div className="w-[100%] flex flex-col gap-3  ">
           <div className="text-base font-semibold">Today</div>
-          {today.map(({ logo, lending, hours, currency }, idx) => (
-            <div
-              key={idx}
-              className="flex justify-between  border-solid border-2 rounded-xl h-16 px-6 w-[100%] bg-white py-3"
-            >
-              <div className="flex gap-4 items-center">
-                <input type="checkbox" className="w-5 h-5" />
-                <Image
-                  src={logo}
-                  width={40}
-                  height={40}
-                  className="w-10 h-10"
-                />
-                <div>
-                  <p className="font-normal text-base">{lending}</p>
-                  <p className="font-normal text-xs">{hours}</p>
+          {userRecord &&
+            userRecord.map(({ amount, category, time }, idx) => (
+              <div
+                key={idx}
+                className="flex justify-between  border-solid border-2 rounded-xl h-16 px-6 w-[100%] bg-white py-3"
+              >
+                <div className="flex gap-4 items-center">
+                  <input type="checkbox" className="w-5 h-5" />
+                  <Image
+                    src="/home.png"
+                    width={40}
+                    height={40}
+                    className="w-10 h-10"
+                  />
+                  <div>
+                    <p className="font-normal text-base">{category}</p>
+                    <p className="font-normal text-xs">{time}</p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="text-base font-semibold text-[#EAB308]">
-                {currency}
+                <div className="text-base font-semibold ">{amount}₮</div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
         <div className="w-[100%] flex flex-col gap-3  ">
           <div className="text-base font-semibold">Yesterday</div>
-          {today.map(({ logo, lending, hours, currency }, idx) => (
-            <div
-              key={idx}
-              className="flex justify-between  border-solid border-2 rounded-xl h-16 px-6 w-[100%] bg-white py-3"
-            >
-              <div className="flex gap-4 items-center">
-                <input type="checkbox" className="w-5 h-5 " />
-                <Image
-                  src={logo}
-                  width={40}
-                  height={40}
-                  className="w-10 h-10"
-                />
-                <div>
-                  <p className="font-normal text-base">{lending}</p>
-                  <p className="font-normal text-xs">{hours}</p>
+          {userRecord &&
+            userRecord.map(({ amount, category, time }, idx) => (
+              <div
+                key={idx}
+                className="flex justify-between  border-solid border-2 rounded-xl h-16 px-6 w-[100%] bg-white py-3"
+              >
+                <div className="flex gap-4 items-center">
+                  <input type="checkbox" className="w-5 h-5 " />
+                  <Image
+                    src="/home.png"
+                    width={40}
+                    height={40}
+                    className="w-10 h-10"
+                  />
+                  <div>
+                    <p className="font-normal text-base">{category}</p>
+                    <p className="font-normal text-xs">{time}</p>
+                  </div>
+                </div>
+
+                <div className="text-base font-semibold text-[#EAB308]">
+                  {amount}₮
                 </div>
               </div>
-
-              <div className="text-base font-semibold text-[#EAB308]">
-                {currency}
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
       <div className=" ">
